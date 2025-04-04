@@ -1,0 +1,381 @@
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,300,700,500,400italic,500italic,700italic,300italic);
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
+    background: #2C3940;
+    background-image: url('./images/background2.jpg');
+    background-size: cover;
+    background-position: center center; /* Centraliza a imagem */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Opcional: faz a imagem ficar fixa durante o scroll */
+    overflow: hidden;
+    font-family: 'Fira Sans', sans-serif;
+    
+    a{
+        color: white;
+        padding-top: 20px;
+        font-size: 14px;
+        opacity: 0.6;
+        position: relative;
+        top: 10px;
+        transition: all .3s;
+        font-weight: 100;
+        text-decoration: none;
+        display: inline-block;
+        &:hover{
+            opacity: 1;
+        }
+        i.l{
+            margin-right: 5px;
+        }
+    }
+}
+
+input#sequence {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 4px;
+    font-family: 'Fira Sans', sans-serif;
+    color: #2C3940;
+}
+
+.input-container {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 300;
+    }
+}
+
+.result {
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    
+    h3 {
+        font-weight: 300;
+        margin-bottom: 15px;
+    }
+    
+    &.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#result-display {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00C4FF;
+    min-height: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 4px;
+    width: 80%;
+    margin: 0 auto;
+    word-wrap: break-word;
+}
+
+input#button{
+    display: none;
+}
+
+input#button:checked + label{
+    .button_inner{
+        background: transparent;
+        transform: rotate(90deg);
+        width: 100px;
+        border-radius: 100px;
+        box-shadow: 0px 0px 0px 440px rgba(0,0,0,0);
+        animation: finalbox .4s 4.42s cubic-bezier(0.39, 2.01, 0.27, 0.75) forwards;
+        span.t{
+            opacity: 0;
+            top: 20px;
+        }
+    }
+    i.l{
+        left: 14px;
+        opacity: 1;
+        top: 11px;
+        animation: down 1s .25s infinite, final .2s 4s forwards;
+    }
+    .tick{
+        position: absolute;
+        left: 2px;
+        right: 0;
+        transform: scale(0) rotate(-90deg);
+        color: #00C1FC;
+        top: 11px;
+        margin: auto;
+        font-size: 22px;
+        animation: tick .3s 4.7s forwards;
+    }
+    .button_spots{
+        opacity: 1;
+        @for $i from 0 through 60{
+            &:nth-of-type(#{$i}){
+                top: (16px - random(10)) - 0 !important;
+                left: -34px  !important;
+                opacity: 0;
+                padding: random(20)/4 + 2 + px !important;
+                animation: spew 1s .3s forwards, rotate 4s + random(4)/10 .25s + random(12)/10 linear infinite, final .2s 4s forwards, spot-#{$i} .7s .4/random(10) + random(10)/10 + 10s linear infinite !important;
+            }
+        }
+    }
+}
+
+.tick{
+    position: absolute;
+    left: -40;
+    right: 0;
+    transform: scale(0);
+    margin: auto;
+    font-size: 22px;
+}
+
+.button{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: Center;
+    height: 450px;
+    width: 80%;
+    max-width: 400px;
+    transform: translateY(-50%);
+    
+    h1{
+        font-weight: 100;
+        color: White;
+        font-size: 28px;
+        margin: 0;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    h2{
+        font-weight: 100;
+        color: #00C4FF;
+        opacity: 1;
+        font-size: 16px;
+        margin: 8px 0px 0px 0px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .b_l_quad .button_spots{
+        @for $i from 1 through 20{
+            &:nth-child(#{$i}){
+                padding: random(3) + 2 + px;
+                left: -25 + ($i * 12) + px;
+                top: 50 + px;
+            }
+        }
+        @for $i from 20 through 40{
+            &:nth-child(#{$i}){
+                padding: random(3) + 2 + px;
+                left: -255 + ($i * 12) + px;
+                top: -12 + px;
+            }
+        }
+        @for $i from 40 through 46{
+            &:nth-child(#{$i}){
+                padding: random(3) + 2 + px;
+                left: 204px;
+                top: -488 + ($i * 12) + px;
+            }
+        }
+        @for $i from 46 through 52{
+            &:nth-child(#{$i}){
+                padding: random(3) + 2 + px;
+                left: -10px;
+                top: -568 + ($i * 12) + px;
+            }
+        }
+    }
+    
+    .button_spots{
+        position: absolute;
+        border-radius: 100px;
+        background: green;
+        opacity: 0;
+        animation: opacity 1s;
+        @for $i from 1 through 52{
+            &:nth-of-type(#{$i}){
+                transform-origin: 90px - random(10) 20px - random(10);
+                background: hsla(350 + random(399), 57% - random(10), 65%, 1);
+                box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.12);
+                transition: all 1s + random(10)/10;
+            }
+        }
+    }
+    
+    &_inner{
+        border-radius: 4px;
+        position: relative;
+        width: 200px;
+        height: 50px;
+        left: 0;
+        right: 0;
+        margin: 20px auto 0;
+        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.04);
+        font-weight: 100;
+        font-size: 16px;
+        cursor: pointer;
+        border: 2px solid #FFFFFF;
+        color: white;
+        text-align: Center;
+        transition: all .3s, box-shadow .2s, transform .2s .2s;
+        
+        span.t{
+            position: relative;
+            top: 12px;
+            opacity: 1;
+            left: -10px;
+            transition: left .4s .1s;
+        }
+        
+        i.l{
+            position: relative;
+            left: -19px;
+            top: 20px;
+            color: #00C4FF;
+            font-size: 25px;
+            opacity: 0;
+            transition: left .3s 0s, top .3s 0s, opacity .3s 0s;
+        }
+        
+        &:hover{
+            color: #2C3940;
+            background: white;
+            box-shadow: 0px 17px 18px -14px rgba(0, 0, 0, 0.08);
+            
+            span.t{
+                left: 16px;
+                transition: left .4s;
+            }
+            
+            i.l{
+                top: 12px;
+                opacity: 1;
+                transition: left .3s 0s, top .3s .1s, opacity .3s .1s;
+            }
+        }
+        
+        &:hover .button_spots{
+            @for $i from 1 through 19{
+                &:nth-of-type(#{$i}){
+                    animation: spot-#{$i} .7s .4/random(10) + random(10)/10 + s linear infinite;
+                }
+            }
+            @for $i from 20 through 40{
+                &:nth-of-type(#{$i}){
+                    animation: spot-#{$i} .7s .4/random(10) + random(10)/10 + s linear infinite;
+                }
+            }
+            @for $i from 40 through 46{
+                &:nth-of-type(#{$i}){
+                    animation: spot-#{$i} .7s .4/random(10) + random(10)/10 + s linear infinite;
+                }
+            }
+            @for $i from 46 through 54{
+                &:nth-of-type(#{$i}){
+                    animation: spot-#{$i} .7s .4/random(10) + random(10)/10 + s linear infinite;
+                }
+            }
+        }
+    }
+}
+
+@for $i from 1 through 20{
+    @keyframes spot-#{$i}{
+        from{opacity: 0;}
+        to{transform: translateY(30px) translatex(-20px + $i*2); opacity: .6;}
+    }
+}
+@for $i from 20 through 40{
+    @keyframes spot-#{$i}{
+        from{opacity: 0;}
+        to{transform: translateY(-30px) translatex(-50px + $i*2); opacity: .6;}
+    }
+}
+@for $i from 40 through 45{
+    @keyframes spot-#{$i}{
+        from{opacity: 0;}
+        to{transform: translateY(-86px + $i*2) translatex(40px); opacity: .6;}
+    }
+}
+@for $i from 46 through 54{
+    @keyframes spot-#{$i}{
+        from{opacity: 0;}
+        to{transform: translateY(-99px + $i*2) translatex(-40px); opacity: .6;}
+    }
+}
+
+@keyframes opacity{
+    from{}
+    to{opacity: 0;}
+}
+
+@keyframes rotate{
+    from{opacity: .8}
+    to{transform: rotate(360deg); opacity: .8}
+}
+
+@keyframes down{
+    from{left: 10px;}
+    to{left: 57px;}
+}
+
+@keyframes spew{
+    from{opacity: 0;}
+    to{opacity: 0.8;}
+}
+
+@keyframes final{
+    from{opacity: 1;}
+    to{opacity: 0;}
+}
+
+@keyframes finalbox{
+    from{}
+    to{width: 50px;}
+}
+
+@keyframes tick{
+    from{}
+    to{transform: scale(1) rotate(-90deg)}
+}
+
+// Animação para o botão de reset
+#reset-button {
+    display: block;
+    margin: 30px auto;
+    padding: 10px 15px;
+    background: rgba(0, 196, 255, 0.2);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    
+    &.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    &:hover {
+        background: rgba(0, 196, 255, 0.4);
+    }
+}

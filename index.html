@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Enigma do Mago do Tempo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="button">
+        <h1>O Enigma do Mago do Tempo</h1>
+        <br>
+        <br>
+        <h2>Ajude o mago a corrigir sua viagem temporal</h2>
+        
+        <div class="input-container">
+            <label for="sequence">Insira a sequência temporal (separada por vírgulas):</label>
+            <input type="text" id="sequence" placeholder="Ex: 21, 12, 31, 13">
+        </div>
+        <br>
+        <br>
+        <br>
+        <input id="button" type="checkbox">
+        <label for="button">
+            <div class="button_inner q">
+                <i class="l ion-wand"></i>
+                <span class="t">Resolver Enigma</span>
+                <span>
+                    <i class="tick ion-checkmark-round"></i>
+                </span>
+                <div class="b_l_quad">
+                    <!-- Spots gerados dinamicamente via JavaScript -->
+                </div>
+            </div>
+        </label>
+        
+        <div class="result">
+            <h3>Resultado da Viagem Temporal:</h3>
+            <div id="result-display"></div>
+        </div>
+        
+        <a href="#" id="reset-button">
+            <i class="ion-refresh"></i>
+            <span>Tentar novamente</span>
+        </a>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
